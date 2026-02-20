@@ -1,10 +1,12 @@
 const express = require("express");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 const SECRET_KEY = "soudip12345";
 const JWT_SECRET = "my_jwt_secret";
@@ -15,10 +17,9 @@ const verifyJwt = (req, res, next) => {
     return res.status(401).json({ message: "No token provided." });
   }
   try {
-    // console.log(token)
     const decodedToken = jwt.verify(token, JWT_SECRET);
     req.users = decodedToken;
-    next()
+    next();
   } catch (error) {
     return res.status(402).json({ message: "Invalid Token" });
   }

@@ -3,8 +3,8 @@ const jwt = require("jsonwebtoken");
 
 const router = express.Router();
 
-const SECRET_KEY = "soudip12345";
-const JWT_SECRET = "my_jwt_secret";
+const SECRET_KEY = process.env.SECRET_KEY;
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Middleware
 const verifyJwt = (req, res, next) => {

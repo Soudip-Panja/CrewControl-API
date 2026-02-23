@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const projectSchema = new mongoose.Schema({
   name: {
     type: String,
-    require: true,
+    required: true,
     unique: true,
   }, //Project name must be unique
   description: {

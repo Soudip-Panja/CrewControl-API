@@ -1,14 +1,17 @@
 [
   {
     "name": "Soudip Panja",
-    "email": "soudip03pan@gmail.com"
+    "email": "soudip03pan@gmail.com",
+    "password": "soudip123"
   },
   {
     "name": "neoG",
-    "email": "neog@gmail.com"
+    "email": "neog@gmail.com",
+    "password": "neog123"
   },
   {
     "name": "Demo",
-    "email": "demo@gmail.com"
+    "email": "demo@gmail.com",
+    "password": "demo123"
   }
 ]

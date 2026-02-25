@@ -2,7 +2,7 @@ const { initializeDatabase } = require("./db/db.connect");
 initializeDatabase();
 
 const { seedUser } = require("./seedData/usersSeeding");
-seedUser();
+// seedUser();
 
 const express = require("express");
 require("dotenv").config();

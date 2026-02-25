@@ -1,21 +1,21 @@
 const fs = require("fs");
 const user = require("../models/user.model");
 
-const jsonData = fs.readFileSync("./data/users.json", "utf-8")
+const jsonData = fs.readFileSync("./data/users.json", "utf-8");
 const usersData = JSON.parse(jsonData);
 
 async function seedUser() {
   try {
-    for (const userData of usersData){
-        const newUser = new user({
-            name: userData.name,
-            email: userData.email,
-            password: userData.password
-        });
-        // console.log(newUser)
-        await newUser.save()
+    for (const userData of usersData) {
+      const newUser = new user({
+        name: userData.name,
+        email: userData.email,
+        password: userData.password,
+      });
+      // console.log(newUser)
+      await newUser.save();
     }
-    console.log("User data successfully seeded.")
+    console.log("User data successfully seeded.");
   } catch (error) {
     console.log("Error seeding user data:", error);
   }

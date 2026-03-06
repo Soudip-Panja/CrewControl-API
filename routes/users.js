@@ -11,11 +11,17 @@ async function createUser(newUser) {
     if (!newUser.name || !newUser.email || !newUser.password) {
       console.log("Name, Email and Password are require.");
       return;
-    } else {
-      const user = new User(newUser);
-      const saveUser = await user.save();
-      console.log("New user:", saveUser);
     }
+
+    const existingUser = await User.findOne({ email: newUser.email });
+
+    if (existingUser) {
+      console.log("Error: User email already exist.");
+      return;
+    }
+    const user = new User(newUser);
+    const saveUser = await user.save();
+    console.log("New user:", saveUser);
   } catch (error) {
     console.log("Error creating new user", error);
   }

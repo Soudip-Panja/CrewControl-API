@@ -9,6 +9,7 @@ require("dotenv").config();
 const cors = require("cors");
 
 const authRoute = require("./routes/auth");
+const userRoute = require("./routes/users")
 
 const app = express();
 
@@ -16,18 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/", authRoute);
-
-
-const { createUser } = require("./routes/users");
-
-const newUser = {
-  name: "Radha Panja",
-  email: "radha03pan@gmail.com",
-  password: "radha123",
-};
-
-createUser(newUser);
-
+app.use("/", userRoute)
 
 
 const PORT = process.env.PORT || 3000;

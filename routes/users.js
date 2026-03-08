@@ -7,22 +7,22 @@ const router = express.Router();
 async function createUser(newUser) {
   try {
     if (!newUser.name || !newUser.email || !newUser.password) {
-      return { error: "Name, Email and Password are require." };
+      return { error: "Name, email and password are required." };
     }
     const existingUser = await User.findOne({ email: newUser.email });
     if (existingUser) {
-      return { error: "Error: User email already exist." };
+      return { error: "User with this email already exists." };
     }
     const user = new User(newUser);
-    const saveUser = await user.save();
-    return saveUser;
+    const savedUser = await user.save();
+    return savedUser;
   } catch (error) {
     console.log("Error creating new user", error);
     return { error: "Database error" };
   }
 }
 
-router.post("/v1/create/user", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newUser = await createUser(req.body);
     if (newUser.error) {

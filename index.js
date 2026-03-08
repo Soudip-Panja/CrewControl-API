@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/", authRoute);
+app.use("/v1/auth", authRoute);
 app.use("/v1/users", userRoute)
 
 
